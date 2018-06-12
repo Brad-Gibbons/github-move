@@ -1,0 +1,29 @@
+
+*,
+*::before::before,
+*::after::after  {
+     box-sizing: border-box;
+}
+
+body {
+  margin: 20px 0;
+  background: lightgray;
+}
+
+.grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+  margin: 5px;
+  background-color: lightgray;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 150px;
+  width: 150px;
+}
