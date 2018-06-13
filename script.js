@@ -3,20 +3,12 @@ const cardsArray = [{
     'img': 'images/boston-celtics-logo-vector.png',
   },
   {
-    'name': 'Nets',
-    'img': 'images/brooklyn-nets-logo-vector.png', 
-  },
-  {
     'name': 'Bulls',
     'img': 'images/chicago-bulls.png',
   },
   {
     'name': 'Cavs',
     'img': 'images/cleveland-cavaliers-logo-vector.png',
-  },
-  {
-    'name': 'Pistons',
-    'img': 'images/detroit-pistons-logo-vector.png',
   },
   {
     'name': 'Warriors',
@@ -51,6 +43,7 @@ let gameGrid = cardsArray.concat(cardsArray);
 gameGrid.sort(() => 0.5 - Math.random());
 
 //init count & guesses
+let clicks = 0;
 let delay = 1200
 let previousTarget = null;
 let count = 0;
@@ -65,8 +58,7 @@ grid.setAttribute('class', 'grid')
 //append section
 game.appendChild(grid);
 
-//For each team in array
-
+//For each team in array -- Creates Gameboard
 gameGrid.forEach(item => {
     const card = document.createElement('div');
     // adds class
@@ -88,11 +80,11 @@ gameGrid.forEach(item => {
     card.appendChild(back);
 });
 
-// Event listeners
+// Event listeners - For when user cicks, run code
 grid.addEventListener('click', function (event) {
     // The event target is our clicked item
     let clicked = event.target;
-  
+    clicks++;
     // Do not allow the grid section itself to be selected; only select divs inside the grid
     if (clicked.nodeName === 'SECTION' || clicked === previousTarget) { return; }
     
@@ -119,6 +111,9 @@ grid.addEventListener('click', function (event) {
             setTimeout(resetGuesses, delay);
         }
     }
+    
+    score = document.getElementById('score');
+    score.innerHTML = clicks;
     previousTarget = clicked;
    });
 
@@ -141,3 +136,5 @@ grid.addEventListener('click', function (event) {
       card.classList.remove('selected');
     });
   };
+
+  
